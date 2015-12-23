@@ -1,0 +1,75 @@
+
+Do the following:
+
+rake db:migrate
+rake
+
+
+Then you should be able to play around with the Student class, it's specs and also manipulate the database.
+
+
+
+Here is a typelog of what you should be able to do....
+
+
+
+Robotron:rubybase rdegraci$ rake db:migrate
+== 20151223224037 Student: migrating ==========================================
+-- create_table(:students)
+   -> 0.0010s
+== 20151223224037 Student: migrated (0.0011s) =================================
+
+Robotron:rubybase rdegraci$ rake
+rspec -r /Users/rdegraci/Desktop/rubybase/spec/spec_helper.rb
+-- create_table("students", {:force=>:cascade})
+   -> 0.0034s
+-- initialize_schema_migrations_table()
+   -> 0.0014s
+.
+
+Finished in 0.01143 seconds (files took 0.47174 seconds to load)
+1 example, 0 failures
+
+cucumber
+-- create_table("students", {:force=>:cascade})
+   -> 0.0036s
+-- initialize_schema_migrations_table()
+   -> 0.0016s
+requiring /Users/rdegraci/Desktop/rubybase/features/support/../../lib/student.rb
+0 scenarios
+0 steps
+0m0.000s
+Robotron:rubybase rdegraci$ rake console
+irb -rubygems -I lib -r /Users/rdegraci/Desktop/rubybase/console/env.rb
+requiring /Users/rdegraci/Desktop/rubybase/console/../lib/student.rb
+2.2.0 :001 > Student.connection
+ => #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007faef2b50948 @transaction_manager=#<ActiveRecord::ConnectionAdapters::TransactionManager:0x007faef2bca3d8 @stack=[], @connection=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007faef2b50948 ...>>, @query_cache={}, @query_cache_enabled=false, @mon_owner=nil, @mon_count=0, @mon_mutex=#<Mutex:0x007faef2bca310>, @connection=#<SQLite3::Database:0x007faef2b50a88 @tracefunc=nil, @authorizer=nil, @encoding=nil, @busy_handler=nil, @collations={}, @functions={}, @results_as_hash=true, @type_translation=nil, @readonly=false>, @owner=#<Thread:0x007faef08c0400 run>, @instrumenter=#<ActiveSupport::Notifications::Instrumenter:0x007faef2bca248 @id="0644a73df2dd3da18627", @notifier=#<ActiveSupport::Notifications::Fanout:0x007faef2bba3e8 @subscribers=[#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x007faef0970a30 @pattern="render_bind.active_record", @delegate=#<ActiveRecord::LogSubscriber:0x007faef0971160 @queue_key="ActiveRecord::LogSubscriber-70194668734640", @patterns=["render_bind.active_record", "sql.active_record", "odd?.active_record", "logger.active_record"], @odd=false>, @can_publish=false>, #<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x007faef09704b8 @pattern="sql.active_record", @delegate=#<ActiveRecord::LogSubscriber:0x007faef0971160 @queue_key="ActiveRecord::LogSubscriber-70194668734640", @patterns=["render_bind.active_record", "sql.active_record", "odd?.active_record", "logger.active_record"], @odd=false>, @can_publish=false>, #<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x007faef09701c0 @pattern="odd?.active_record", @delegate=#<ActiveRecord::LogSubscriber:0x007faef0971160 @queue_key="ActiveRecord::LogSubscriber-70194668734640", @patterns=["render_bind.active_record", "sql.active_record", "odd?.active_record", "logger.active_record"], @odd=false>, @can_publish=false>, #<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x007faef0973708 @pattern="logger.active_record", @delegate=#<ActiveRecord::LogSubscriber:0x007faef0971160 @queue_key="ActiveRecord::LogSubscriber-70194668734640", @patterns=["render_bind.active_record", "sql.active_record", "odd?.active_record", "logger.active_record"], @odd=false>, @can_publish=false>, #<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x007faef09ae100 @pattern="sql.active_record", @delegate=#<ActiveRecord::ExplainSubscriber:0x007faef09ae1f0>, @can_publish=false>], @listeners_for=#<ThreadSafe::Cache:0x007faef2bba348 @backend={}, @default_proc=nil>, @_mutex=#<Mutex:0x007faef2bba280>>>, @logger=nil, @pool=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x007faef2a4b048 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Mutex:0x007faef2a4afd0>, @spec=#<ActiveRecord::ConnectionAdapters::ConnectionSpecification:0x007faef29d19c8 @config={:adapter=>"sqlite3", :database=>"db/developent.sqlite3", :pool=>5, :timeout=>5000}, @adapter_method="sqlite3_connection">, @checkout_timeout=5, @reaper=#<ActiveRecord::ConnectionAdapters::ConnectionPool::Reaper:0x007faef2a4afa8 @pool=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x007faef2a4b048 ...>, @frequency=nil>, @size=5, @reserved_connections=#<ThreadSafe::Cache:0x007faef2a4af58 @backend={70194668372480=>#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007faef2b50948 ...>}, @default_proc=nil>, @connections=[#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007faef2b50948 ...>], @automatic_reconnect=true, @available=#<ActiveRecord::ConnectionAdapters::ConnectionPool::Queue:0x007faef2a4ae40 @lock=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x007faef2a4b048 ...>, @cond=#<MonitorMixin::ConditionVariable:0x007faef2a4ae18 @monitor=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x007faef2a4b048 ...>, @cond=#<Thread::ConditionVariable:0x007faef2a4ada0>>, @num_waiting=0, @queue=[]>>, @schema_cache=#<ActiveRecord::ConnectionAdapters::SchemaCache:0x007faef2bc9fc8 @connection=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007faef2b50948 ...>, @columns={}, @columns_hash={}, @primary_keys={}, @tables={}>, @visitor=#<Arel::Visitors::SQLite:0x007faef2bc9d70 @dispatch={}, @connection=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x007faef2b50948 ...>>, @prepared_statements=true, @active=nil, @statements=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter::StatementPool:0x007faef2bc9e88 @connection=#<SQLite3::Database:0x007faef2b50a88 @tracefunc=nil, @authorizer=nil, @encoding=nil, @busy_handler=nil, @collations={}, @functions={}, @results_as_hash=true, @type_translation=nil, @readonly=false>, @max=1000, @cache={}>, @config={:adapter=>"sqlite3", :database=>"db/developent.sqlite3", :pool=>5, :timeout=>5000}>
+2.2.0 :002 > Student.count
+ => 0
+2.2.0 :003 > Student.create
+ => #<Student id: 1, name: nil, created_at: "2015-12-23 23:11:55", updated_at: "2015-12-23 23:11:55">
+2.2.0 :004 > Student.count
+ => 1
+2.2.0 :005 > exit
+Robotron:rubybase rdegraci$ rake console
+irb -rubygems -I lib -r /Users/rdegraci/Desktop/rubybase/console/env.rb
+requiring /Users/rdegraci/Desktop/rubybase/console/../lib/student.rb
+2.2.0 :001 > Student.count
+ => 1
+2.2.0 :002 > Student.first
+ => #<Student id: 1, name: nil, created_at: "2015-12-23 23:11:55", updated_at: "2015-12-23 23:11:55">
+2.2.0 :003 > s = Student.first
+ => #<Student id: 1, name: nil, created_at: "2015-12-23 23:11:55", updated_at: "2015-12-23 23:11:55">
+2.2.0 :004 > s.name = "Charlie"
+ => "Charlie"
+2.2.0 :005 > s.save
+ => true
+2.2.0 :006 > exit
+Robotron:rubybase rdegraci$ rake console
+irb -rubygems -I lib -r /Users/rdegraci/Desktop/rubybase/console/env.rb
+requiring /Users/rdegraci/Desktop/rubybase/console/../lib/student.rb
+2.2.0 :001 > Student.first
+ => #<Student id: 1, name: "Charlie", created_at: "2015-12-23 23:11:55", updated_at: "2015-12-23 23:12:37">
+2.2.0 :002 > exit
+Robotron:rubybase rdegraci$
+
