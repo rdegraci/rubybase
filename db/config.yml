@@ -1,0 +1,15 @@
+# Database connection parameters for gem 'standalone_migrations'
+# Note: db/config.yml directory is required by gem 'standalone_migrations'
+#
+development:
+  adapter: sqlite3
+  database: db/developent.sqlite3
+  pool: 5
+  timeout: 5000
+    
+test:
+  adapter: sqlite3
+  database: ':memory:'
+  pool: 5
+  timeout: 5000
+  

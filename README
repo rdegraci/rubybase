@@ -1,0 +1,40 @@
+rubybase is a small project for hacking together quick and dirty ActiveRecord Ruby tools, with support for a console, rspec, and cucumber. Tests are run via SQLite in-memory database and development uses SQLite. 
+
+DATABASE CONSOLE
+
+rake console
+
+
+TESTS
+
+rake or rake test
+
+
+NOTE:
+
+If you get the following error, cannot load such file -- rubybase/spec/../db/schema.rb (LoadError) you'll need to create at least one migration and run rake db:migrate
+
+
+MIGRATIONS
+
+To create a new database migration:
+
+rake db:new_migration name=foo_bar_migration
+edit db/migrate/20081220234130_foo_bar_migration.rb
+
+rake db:migrate
+To migrate to a specific version (for example to rollback), defaults to development
+
+rake db:migrate VERSION=20081220234130
+To migrate a specific database (for example your "testing" database)
+
+rake db:migrate RAILS_ENV=development
+To execute a specific up/down of one single migration, defaults to development
+
+rake db:migrate:up VERSION=20081220234130
+To revert your last migration
+
+rake db:rollback
+To revert your last 3 migrations
+
+rake db:rollback STEP=3
