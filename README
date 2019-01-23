@@ -1,4 +1,10 @@
-rubybase is a small project for hacking together quick and dirty ActiveRecord Ruby tools, with support for a console, rspec, and cucumber. Tests are run via SQLite in-memory database and development uses SQLite. 
+rubybase is a small project for hacking together quick and dirty ActiveRecord Ruby tools, with support for a console, rspec, and cucumber. Tests are run via SQLite in-memory database and development uses Postgresql 
+
+
+DATABASE
+
+Edit the db/config.yaml with the appropriate values to connect to your Postgresql database
+
 
 DATABASE CONSOLE
 
@@ -12,7 +18,7 @@ rake or rake test
 
 NOTE:
 
-If you get the following error, cannot load such file -- rubybase/spec/../db/schema.rb (LoadError) you'll need to create at least one migration and run rake db:migrate
+If you get the following error, cannot load such file -- rubybase/spec/../db/schema.rb (LoadError) you'll need to run rake db:migrate to create the schema.rb
 
 
 MIGRATIONS
@@ -38,3 +44,18 @@ rake db:rollback
 To revert your last 3 migrations
 
 rake db:rollback STEP=3
+
+
+ACTIVERECORD
+
+After running a migration, you will need to add a class in the /lib directory that will represent your ActiveRecord class. 
+For example:
+
+
+# lib/Apple.rb
+class Apple < ActiveRecord::Base
+end
+
+
+
+- After creating the class, you can do: rake console to access the database

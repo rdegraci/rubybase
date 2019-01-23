@@ -10,9 +10,10 @@ end
 
 
 task :console do
-  sh "irb -rubygems -I lib -r #{File.dirname(__FILE__)}/console/env.rb"
+  sh "irb -r rubygems -I lib -r #{File.dirname(__FILE__)}/console/env.rb"
 end
 
 
-require 'standalone_migrations'
-StandaloneMigrations::Tasks.load_tasks
+
+require 'active_record_migrations'
+ActiveRecordMigrations.load_tasks
